@@ -1,0 +1,858 @@
+@use 'variables';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Avenir LT Std', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+
+  transition: all 100ms ease;
+
+  &.menuIsOpen {
+    overflow: hidden;
+
+    .crlab-overlay {
+      visibility: visible;
+    }
+  }
+}
+
+//Container
+.crlab-container {
+  &.lg {
+    @media (min-width: 1120px) {
+      max-width: 1068px;
+      margin: 6.25rem auto;
+    }
+  }
+
+  @media (max-width: 1120px) {
+    padding: 2rem 2.5rem;
+  }
+
+  @media (max-width: 576px) {
+    padding: 2rem 1rem;
+  }
+}
+
+//Image fluid
+.crlab-responsive-image {
+  max-width: 100%;
+}
+
+//Overlay
+.crlab-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 100;
+
+  visibility: hidden;
+
+  @media (min-width: 1120px) {
+    display: none;
+  }
+}
+
+//Fab Whatsapp
+.crlab-whatsapp-fab {
+  position: fixed;
+  right: 70px;
+  bottom: 70px;
+  z-index: 999;
+
+  background-color: variables.$green;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+
+  width: 100px;
+  height: 100px;
+
+  line-height: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  &:hover {
+    animation: pulse;
+    animation-duration: .5s;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+    filter: invert(1);
+  }
+
+  @media (max-width: 1120px) {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+//Botão
+.crlab-button {
+  background: transparent;
+
+  display: block;
+
+  border: 1px solid variables.$gray;
+  color: variables.$black;
+
+  max-width: 297px;
+  margin: 0 auto;
+
+  padding: 2rem 1.25rem;
+
+  font-family: 'Avenir LT Std', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  &:hover {
+    transition: all 0.2s ease;
+    filter: brightness(0.7);
+    opacity: 0.7 !important;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1120px) {
+    max-width: 100%;
+    margin: unset;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+  }
+
+  &.thinner {
+    padding: 2rem 1.25rem;
+    max-width: 542px;
+
+    @media (max-width: 1120px) {
+      max-width: 100%;
+      padding: 1rem 1.25rem;
+    }
+  }
+
+  &.w-100 {
+    width: 100%;
+  }
+
+  &.left {
+    margin: 0 0;
+  }
+
+  &.small {
+    padding: 1.5rem 2rem;
+    width: auto;
+
+    font-size: 0.9375rem;
+    line-height: 18px;
+  }
+
+  &.border {
+    border: 1px solid variables.$black;
+  }
+}
+
+//Heading
+.crlab-heading {
+  font-family: 'Apple Garamond', serif;
+  font-size: 3.75rem;
+  line-height: 60px;
+  font-weight: 400;
+
+  margin-top: 0;
+  margin-bottom: 0;
+
+
+  &.center {
+    text-align: center;
+  }
+
+  &.lg {
+    font-size: 5rem;
+    line-height: 100%;
+
+    max-width: 644px;
+    width: 100%;
+
+    @media (max-width: 1120px) {
+      font-size: 3.55rem;
+    }
+
+    @media (max-width: 400px) {
+      text-align: center;
+      font-size: 3rem;
+
+    }
+  }
+
+  &.italic {
+    font-style: italic;
+  }
+
+  &.wrap {
+    max-width: 415px;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 1120px) {
+      max-width: unset;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &.text-gray {
+    color: variables.$gray;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 2.5rem;
+    line-height: 45px;
+  }
+}
+
+.crlab-subtitle {
+  color: variables.$black;
+  font-size: 1.875rem;
+  font-family: 'Apple Garamond', sans-serif;
+  font-weight: 400;
+  line-height: 40px;
+
+  margin-bottom: 1.25rem;
+
+  &.italic {
+    font-style: italic;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 1.25rem;
+    line-height: 25px;
+    margin-bottom: 0.375rem;
+
+  }
+}
+
+//Paragraph
+p {
+  font-size: 1.125rem;
+  line-height: 30px;
+  margin: 0;
+
+  &.center {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+/************************Start Header****************************/
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 7.5rem);
+
+  padding: 2rem 3.75rem;
+
+  .crlab-logo {
+    text-decoration: none;
+    max-width: 131px;
+  }
+
+  .crlab-mobile-menu-trigger {
+    width: 42px;
+    height: 38px;
+    position: relative;
+    cursor: pointer;
+
+    span {
+      display: block;
+      height: 5px;
+      width: 100%;
+      background-color: variables.$black;
+      position: absolute;
+
+      &.top {
+        top: 0;
+      }
+
+      &.middle {
+        top: 16.5px
+      }
+
+      &.bottom {
+        bottom: 0;
+      }
+    }
+
+    @media (min-width: 1120px) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  .crlab-mobile-menu {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+
+    height: 100%;
+    width: 70vw;
+    opacity: 0;
+
+    background-color: variables.$white;
+    color: variables.$black;
+    font-size: 1.5rem;
+
+    overflow: hidden;
+
+    transform: translateX(70vw);
+
+    transition: all 300ms ease;
+
+    /* &::after {
+      content: url(../../images/waves.svg);
+
+      position: absolute;
+      bottom: -290px;
+      z-index: 0;
+
+      transform: rotateZ(45deg);
+      opacity: 0.1;
+    } */
+
+    @media (max-width: 768px) {
+      font-size: 1.25rem;
+    }
+
+    .nav-links-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: center;
+
+      margin-top: 5rem;
+
+      .crlab-close-menu-button {
+        position: absolute;
+        top: 30px;
+        right: 25px;
+        font-size: 3rem;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 700;
+
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      text-align: center;
+
+      &:hover {
+        transition: opacity 0.2s;
+        opacity: 0.7;
+      }
+    }
+
+    &.menuIsOpen {
+      height: calc(100% - 6rem);
+
+      padding: 3rem 1.5rem;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.4);
+
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .crlab-button {
+      font-size: inherit;
+      line-height: 100%;
+
+      z-index: 1;
+    }
+
+    @media (min-width: 1120px) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      text-decoration: none;
+      color: variables.$black;
+      text-transform: uppercase;
+
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      font-size: 0.9375rem;
+      line-height: 18px;
+      font-weight: 700;
+
+      &.crlab-button {
+        margin-left: 4.6875rem;
+        margin-right: 3.75rem;
+
+        @media (max-width: 1366px) {
+          margin-left: 3.75rem;
+          margin-right: 2.5rem;
+        }
+      }
+
+      &:hover {
+        opacity: .7;
+        color: variables.$gray;
+        text-decoration: underline;
+        transition: all 0.2s;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1120px) {
+    width: calc(100% - 2.5rem);
+    padding: 1.25rem 1.25rem;
+  }
+}
+
+/************************End Header****************************/
+
+
+/************************Start Banner****************************/
+.crlab-banner-container {
+  height: 800px;
+
+  position: relative;
+
+  color: variables.$gray;
+
+  @media (max-width: 1120px) {
+    padding: 1.25rem 1.25rem 2.625rem;
+    height: 115vh;
+  }
+
+  @media (max-width: 400px) {
+    height: 130vh;
+  }
+
+  .crlab-fullbanner-background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("../../images/fullBanner.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (max-width: 768px) {
+      background-image: url("../../images/fullBannerMobile.webp");
+    }
+  }
+
+  .crlab-cta-wrapper {
+    max-width: 89.5%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p {
+      margin: 1.25rem 0 3.25rem;
+      font-size: 1.25rem;
+      font-weight: normal;
+      color: variables.$black;
+      
+
+      max-width: 297px;
+
+      @media (min-width: 1024px) and (max-width: 1366px) {
+        width: 37%;
+      }
+
+      @media (max-width: 576px) {
+        font-size: 1.125rem;
+        margin: 1.25rem auto 2.625rem;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      justify-content: end;
+      max-width: 100%;
+    }
+
+    @media (min-width: 1120px) {
+      margin-left: auto;
+    }
+  }
+}
+
+/************************End Banner****************************/
+
+/************************Start Section 1 - Introduction****************************/
+section#introduction {
+  display: flex;
+  background-color: variables.$yellow;
+
+  @media (max-width: 1120px) {
+    flex-direction: column;
+  }
+
+  .crlab-intro-content {
+    max-width: 650px;
+    margin: auto auto;
+
+    @media (max-width: 1120px) {
+      max-width: unset;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      margin-top: 2.875rem;
+    }
+  }
+
+  .crlab-intro-image-wrapper {
+    display: flex;
+    max-width: 750px;
+
+    @media (max-width: 1120px) {
+      max-width: 100%;
+
+      img {
+        flex: 1;
+      }
+    }
+
+    @media (min-width: 1120px) {
+      order: -1;
+    }
+
+    @media (min-width: 1120px) and (max-width: 1366px) {
+      width: 39%;
+    }
+  }
+}
+
+/************************End Section 1 - Introduction****************************/
+
+/************************Start Section 2 - Content****************************/
+section#content {
+  margin-top: -1px;
+  padding-top: 6.875rem;
+  padding-bottom: 6.25rem;
+
+  @media (max-width: 1120px) {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+
+  .crlab-hero {
+    width: 70%;
+    max-width: 1339px;
+
+    display: flex;
+    gap: 11.5%;
+
+    margin: 6.875rem auto;
+
+    &:first-child {
+      margin: 0 auto;
+    }
+
+    .crlab-hero-image-wrapper {
+      max-width: 560px;
+      width: 100%;
+
+      @media (max-width: 1366px) {
+        width: 42%;
+      }
+
+      @media (max-width: 1120px) {
+        max-width: unset;
+        width: auto;
+      }
+    }
+
+    &.crlbab-hero-image-right {
+      .crlab-hero-image-wrapper {
+        order: 2;
+      }
+    }
+
+    @media (max-width: 1120px) {
+      max-width: unset;
+      width: 100%;
+
+      display: block;
+      margin: unset;
+
+      &.crlbab-hero-image-right {
+        .crlab-hero-image-wrapper {
+          order: unset;
+        }
+      }
+    }
+  }
+
+  .crlab-content-wrapper {
+    flex: 1;
+
+    @media (max-width: 1120px) {
+      margin: 1.625rem 0 3.75rem;
+    }
+
+    .box {
+      background-color: variables.$white-90;
+      padding: 2rem 2.5rem;
+      margin-top: 1.5rem;
+
+      .crlab-subtitle {
+        margin-bottom: 0;
+      }
+
+      ul {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+/************************End Section 2 - Content****************************/
+
+/************************Start Section 3 - Contact****************************/
+section#contact {
+
+  @media (max-width: 1120px) {
+    &.crlab-container {
+      padding: 2rem 2.5rem 0;
+
+      @media (max-width: 576px) {
+        padding: 2rem 1rem 0;
+      }
+    }
+  }
+
+  .crlab-heading {
+    margin-bottom: 0.75rem;
+  }
+
+  .crlab-cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 2rem;
+
+    margin: 4.0625rem 0 6.25rem;
+
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(1, 1fr);
+      margin: 2rem 0rem 0.75rem;
+    }
+
+    .crlab-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.625rem;
+
+      width: 100%;
+      padding: 3.125rem 0;
+
+      img {
+        width: 207px;
+        height: 146px;
+
+        transition: all 300ms ease;
+
+        &:hover {
+          -webkit-transform: translateY(-2px);
+          -ms-transform: translateY(-2px);
+          transform: translateY(-2px);
+        }
+      }
+
+      span {
+        font-family: 'Apple Garamond', serif;
+        font-size: 1.875rem;
+        text-align: center;
+        line-height: 40px;
+        white-space: nowrap;
+      }
+
+      p {
+        text-align: center;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30px;
+      }
+    }
+  }
+
+  .crlab-heading-wrapper {
+    max-width: 542px;
+    margin: 0 auto;
+
+    @media (max-width: 1120px) {
+      max-width: unset;
+      margin: unset;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    margin: 3.43rem auto;
+
+    max-width: 650px;
+
+
+    @media (max-width: 1120px) {
+      gap: 1rem;
+
+      margin: 2rem auto 2.5rem;
+    }
+
+    input,
+    textarea {
+      border: 1px solid variables.$black;
+      padding: 0.875rem 0.625rem;
+      color: variables.$black;
+
+      &::placeholder {
+        color: variables.$black
+      }
+    }
+  }
+}
+
+/************************End Section 3 - Contato****************************/
+
+/************************Start Footer****************************/
+footer {
+  color: variables.$black;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 3.75rem;
+
+  @media (max-width: 1120px) {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+
+    margin: 10px auto 0;
+    padding: 2.5rem 0;
+  }
+
+  .crlab-logo {
+    text-decoration: none;
+    max-width: 109px;
+  }
+
+  address {
+    font-size: 1.125rem;
+    line-height: 35px;
+    font-style: italic;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    @media (max-width: 1120px) {
+      max-width: 312px;
+    }
+  }
+
+  .crlab-social {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+
+    .crlab-social-item {
+      width: 33px;
+      height: 33px;
+      text-decoration: none;
+      cursor: pointer;
+
+      transition: all 300ms ease;
+
+      &.filter {
+        filter: invert(1);
+      }
+
+      &:hover {
+        -webkit-transform: translateY(-2px);
+        -ms-transform: translateY(-2px);
+        transform: translateY(-2px);
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/************************End Footer****************************/

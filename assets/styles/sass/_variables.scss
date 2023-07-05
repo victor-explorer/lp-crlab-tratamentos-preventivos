@@ -1,0 +1,18 @@
+//Colors
+$white: #FFFFFF;
+$white-90: #F2F2F2;
+$black: #000000;
+$gray: #8F8F8F;
+$green: #25D366;
+$yellow: #FFE36C;
+
+//Fonts
+@font-face {
+    font-family: "Apple Garamond";
+    src: url(../../fonts/AppleGaramond.ttf) format('truetype');  
+}
+
+@font-face {
+    font-family: "Avenir LT Std";
+    src: url(../../fonts/AvenirLTStd-Book.otf) format('opentype');
+}
